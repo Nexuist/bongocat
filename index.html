@@ -10,10 +10,55 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/7.0.3/sanitize.min.css">
   <link rel="stylesheet" href="./index.css">
   <link rel="icon" type="image/ico" href="./favicon.ico" sizes="32x32">
+
+  <noscript>
+    <style>
+      .noscript-warning {
+        position: relative;
+
+        width: 100%;
+        height: 4em;
+        background-color: #e74c3c;
+
+        text-align: center;
+        color: #fff;
+      }
+
+      .noscript-warning__text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        margin: 0;
+      }
+
+      .noscript-warning__attention {
+        font-weight: 600;
+      }
+    </style>
+  </noscript>
 </head>
 
 <body>
-  <div id="root">
+  <noscript>
+    <aside class="noscript-warning">
+      <p class="noscript-warning__text">
+        <b class="noscript-warning__attention">
+          JavaScript is currently required to bongo.
+        </b>
+
+        <br>
+
+        <small class="noscript-warning__note">
+          Please enable it. 😼
+        </small>
+      </p>
+    </aside>
+  </noscript>
+
+  <div id="root" class="viewport">
     <aside class="loading" v-if="!bongocat">
       <img class="loading__image" src="./bongocat.gif">
       <span class="loading__text">loading...</span>

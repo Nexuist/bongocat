@@ -3,14 +3,6 @@ html {
   height: 100%;
 }
 
-body {
-  padding-top: 5%;
-
-  text-align: center;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  color: #333;
-}
-
 a {
   text-decoration: none;
   color: #6bf;
@@ -22,6 +14,14 @@ a:visited {
 
 a:hover {
   text-decoration: underline;
+}
+
+.viewport {
+  padding-top: 5%;
+
+  text-align: center;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  color: #333;
 }
 
 .information {
