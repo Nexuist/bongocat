@@ -36,7 +36,7 @@ module.exports.bongo = async (event, context, callback) => {
     }
     bongocat =
       filteredBongocats.Items[
-        randomIntFromInterval(0, filteredBongocats.Count)
+        randomIntFromInterval(0, filteredBongocats.Count - 1)
       ];
   } else {
     // Get a random one

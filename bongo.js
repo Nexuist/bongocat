@@ -1,7 +1,6 @@
 let root = new Vue({
   el: "#root",
   mounted: function() {
-    this.slapTheBongo();
     window.addEventListener("keydown", event => {
       switch (event.keyCode) {
         case 32:
@@ -33,6 +32,8 @@ let root = new Vue({
           break;
       }
     });
+    if (!Hls.isSupported()) this.endpoint += "?filter=m3u8";
+    this.slapTheBongo();
   },
   data: {
     endpoint:
@@ -40,7 +41,7 @@ let root = new Vue({
     autoplayWarningSeen: false,
     bongocat: null,
     videoSize: 50,
-    videoControls: false,
+    videoControls: true,
     showFooter: true,
     keys: [
       ["space", "another video"],
@@ -58,6 +59,16 @@ let root = new Vue({
         .then(res => res.json())
         .then(json => {
           this.bongocat = json;
+          if (json.type.S == "m3u8") {
+            Vue.nextTick(() => {
+              var hls = new Hls();
+              hls.loadSource(json.src.S);
+              hls.attachMedia(this.$refs.bongocat);
+              hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                this.$refs.bongocat.play();
+              });
+            });
+          }
         })
         .catch(err => {
           console.log("wtf?");

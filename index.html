@@ -24,7 +24,7 @@
             :style="{ width: videoSize + 'vw', height: videoSize + 'vh'}">
         </video>
         <div id="footer" v-if="showFooter">
-            <button v-on:click="slapTheBongo" class="kbd mobile-only" style="font-size: 6rem">BONGO</button>
+            <button v-on:click="slapTheBongo" class="kbd mobile-only" style="font-size: 3rem; margin-bottom: 10px">BONGO</button>
             <p v-if="!autoplayWarningSeen" class="desktop-only">you may need to press <span class="kbd">space</span>
                 once to get the party
                 started!</p>
@@ -55,7 +55,7 @@
             <!-- if you're wondering why this fake footer is needed, it's bc flex only gives you top/center/bottom when you have 3 divs visible and i'm too lazy to work around that -->
         </div>
     </div>
-    <script src="bongo.js"></script>
+    <script src="bongo.js" defer></script>
 </body>
 
 </html>
