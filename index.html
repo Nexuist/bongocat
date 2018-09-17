@@ -12,8 +12,12 @@
             var bongocat = document.querySelector("#bongocat");
             var originalSource = document.querySelector("#source");
             var submitter = document.querySelector("#submitter");
-            function slapTheBongo() {
+            window.slapTheBongo = function slapTheBongo() {
                 console.log("bongocat!");
+                if (!autoPlayWarningSeen) {
+                    autoPlayWarningSeen = true;
+                    document.getElementById("autoplay-warning").remove();
+                }
                 fetch("https://lkub5gai6i.execute-api.us-east-1.amazonaws.com/prod/slap/the/bongo")
                     .then(res => res.json())
                     .then(json => {
@@ -35,10 +39,6 @@
                     case 32:
                         // [space] Request different video
                         slapTheBongo();
-                        if (!autoPlayWarningSeen) {
-                            autoPlayWarningSeen = true;
-                            document.getElementById("autoplay-warning").remove();
-                        }
                         break;
                     case 189:
                         // [-] Make video smaller
@@ -83,6 +83,7 @@
         </div>
         <video autoplay="autoplay" id="bongocat" style="width: 50vw; height: 50vh"></video>
         <div class="footer" id="footer">
+            <button onclick="javascript:slapTheBongo()" class="kbd mobile-only" style="font-size: 6rem">BONGO</button>
             <p id="autoplay-warning">you may need to press <span class="kbd">space</span> once to get the party
                 started!</p>
             <p><a href="#" target="_blank" id="source">original source</a> submitted by <a href="#" id="submitter"
