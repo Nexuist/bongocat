@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>🐱🥁</title>
+    <style ref="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .content {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+
+        vids = [
+            "https://video.twimg.com/ext_tw_video/993486969702309889/pu/vid/630x640/ARUopI2nxvq7FC-9.mp4",
+            "https://i.imgur.com/FIYNPom.mp4",
+            "https://i.imgur.com/sgtMAad.mp4",
+            "https://i.imgur.com/4rg3Nvw.mp4",
+            "https://i.imgur.com/1tROMvK.mp4"
+        ];
+        window.onload = () => {
+            console.log("bongocat");
+            var bongocat = document.querySelector("#bongocat")
+            bongocat.src = vids[Math.floor(Math.random() * vids.length)];
+            document.onkeydown = function (e) {
+                e = e || window.event;
+                switch (e.keyCode) {
+                    case 32:
+                        // Request different video
+                        document.querySelector("#bongocat").src = vids[Math.floor(Math.random() * vids.length)];
+                        break;
+                    case 189:
+                        // Make video smaller
+                        var currentSize = +bongocat.style.width.substring(0, 2);
+                        bongocat.style.width = currentSize - 5 + "vw";
+                        bongocat.style.height = currentSize - 5 + "vh";
+                        break;
+                    case 187:
+                        // Make video larger
+                        var currentSize = +bongocat.style.width.substring(0, 2);
+                        bongocat.style.width = currentSize + 5 + "vw";
+                        bongocat.style.height = currentSize + 5 + "vh";
+                        break;
+                    case 80:
+                        if (bongocat.paused) return bongocat.play();
+                        bongocat.pause();
+                        break;
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="content">
+        <video autoplay="autoplay" id="bongocat" style="width: 50vw; height: 50vh"></video>
+    </div>
+</body>
+
+</html>
