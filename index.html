@@ -8,15 +8,25 @@
     <link rel="icon" type="image/ico" href="/favicon.ico" sizes="32x32">
     <script type="text/javascript">
 
-        function slapTheBongo() {
-            console.log("bongocat!");
-            fetch("https://lkub5gai6i.execute-api.us-east-1.amazonaws.com/prod/slap/the/bongo").then((res) => res.json()).then(json => {
-                bongocat.src = json.src.S;
-            });
-        }
-
         window.onload = () => {
             var bongocat = document.querySelector("#bongocat");
+            var originalSource = document.querySelector("#source");
+            var submitter = document.querySelector("#submitter");
+            function slapTheBongo() {
+                console.log("bongocat!");
+                fetch("https://lkub5gai6i.execute-api.us-east-1.amazonaws.com/prod/slap/the/bongo")
+                    .then(res => res.json())
+                    .then(json => {
+                        bongocat.src = json.src.S;
+                        originalSource.href = json.original.S;
+                        submitter.href = "https://twitter.com/" + json.submitter.S;
+                        submitter.innerText = "@" + json.submitter.S;
+                    })
+                    .catch(err => {
+                        console.log("wtf?");
+                        console.log(err);
+                    });
+            }
             slapTheBongo();
             autoPlayWarningSeen = false;
             document.onkeydown = function (e) {
@@ -75,6 +85,8 @@
         <div class="footer" id="footer">
             <p id="autoplay-warning">you may need to press <span class="kbd">space</span> once to get the party
                 started!</p>
+            <p><a href="#" target="_blank" id="source">original source</a> submitted by <a href="#" id="submitter"
+                    target="_blank">@nexuist</a></p>
             <ul class="kbd-bar">
                 <li class="kbd-item"><span class="kbd">space</span> another video </li>
                 <li class="kbd-item"><span class="kbd">+</span> zoom in</li>
