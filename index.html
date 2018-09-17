@@ -24,15 +24,16 @@
             :style="{ width: videoSize + 'vw', height: videoSize + 'vh'}">
         </video>
         <div id="footer" v-if="showFooter">
-            <!-- <button onclick="javascript:slapTheBongo()" class="kbd mobile-only" style="font-size: 6rem">BONGO</button> -->
-            <p v-if="!autoplayWarningSeen">you may need to press <span class="kbd">space</span> once to get the party
+            <button v-on:click="slapTheBongo" class="kbd mobile-only" style="font-size: 6rem">BONGO</button>
+            <p v-if="!autoplayWarningSeen" class="desktop-only">you may need to press <span class="kbd">space</span>
+                once to get the party
                 started!</p>
             <p v-if="bongocat">
                 <a :href="bongocat.original.S" target="_blank" id="source">original source</a>
                 submitted by
                 <a :href="`https://twitter.com/${bongocat.submitter.S}`" id="submitter" target="_blank">@{{
                     bongocat.submitter.S }}</a></p>
-            <ul class="kbd-bar">
+            <ul class="kbd-bar desktop-only">
                 <li v-for="k in keys" class="kbd-item"><span class="kbd">{{ k[0] }}</span> {{ k[1] }} </li>
             </ul>
             <div>

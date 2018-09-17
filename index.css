@@ -61,8 +61,14 @@ body {
   justify-content: center;
   padding-bottom: 15px;
 }
+.desktop-only {
+  display: none;
+}
 @media (min-width: 1025px) {
   .mobile-only {
     display: none;
+  }
+  .desktop-only {
+    display: block;
   }
 }
