@@ -12,7 +12,7 @@ const dynamo = new AWS.DynamoDB({
   maxRetries: 5
 });
 
-module.exports.bongo = async (event, context, callback) => {
+module.exports.bongo = async (event, _context, callback) => {
   let bongocat = null;
 
   if (event.queryStringParameters && event.queryStringParameters.filter) {
