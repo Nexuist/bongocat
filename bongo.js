@@ -22,9 +22,7 @@ const root = new Vue({
 
         case "p":
           const vid = this.$refs.bongocat;
-
-          if (vid.paused) return vid.play();
-          vid.pause();
+          vid.paused ? vid.play() : vid.pause();
           break;
 
         case "f":
