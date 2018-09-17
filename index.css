@@ -57,11 +57,8 @@ body {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   padding-bottom: 15px;
 }
-.mobile-only {
-  display: none;
-}
-@media only screen and (max-width: 768px) {
+@media (min-width: 1025px) {
   .mobile-only {
-    display: block;
+    display: none;
   }
 }
