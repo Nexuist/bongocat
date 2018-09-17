@@ -7,20 +7,17 @@
     <link rel="stylesheet" href="/index.css">
     <link rel="icon" type="image/ico" href="/favicon.ico" sizes="32x32">
     <script type="text/javascript">
-
         window.onload = () => {
             var bongocat = document.querySelector("#bongocat");
             var originalSource = document.querySelector("#source");
             var submitter = document.querySelector("#submitter");
-            window.slapTheBongo = function slapTheBongo() {
+            slapTheBongo = window.slapTheBongo = function slapTheBongo() {
                 console.log("bongocat!");
-                if (!autoPlayWarningSeen) {
-                    autoPlayWarningSeen = true;
-                    document.getElementById("autoplay-warning").remove();
-                }
                 fetch("https://lkub5gai6i.execute-api.us-east-1.amazonaws.com/prod/slap/the/bongo")
                     .then(res => res.json())
                     .then(json => {
+                        if (document.getElementById("autoplay-warning")) document.getElementById("autoplay-warning").remove();
+
                         bongocat.src = json.src.S;
                         originalSource.href = json.original.S;
                         submitter.href = "https://twitter.com/" + json.submitter.S;
