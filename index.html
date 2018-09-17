@@ -6,101 +6,41 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/index.css">
     <link rel="icon" type="image/ico" href="/favicon.ico" sizes="32x32">
-    <script type="text/javascript">
-        window.onload = () => {
-            var bongocat = document.querySelector("#bongocat");
-            var originalSource = document.querySelector("#source");
-            var submitter = document.querySelector("#submitter");
-            slapTheBongo = window.slapTheBongo = function slapTheBongo() {
-                console.log("bongocat!");
-                fetch("https://lkub5gai6i.execute-api.us-east-1.amazonaws.com/prod/slap/the/bongo")
-                    .then(res => res.json())
-                    .then(json => {
-                        bongocat.src = json.src.S;
-                        originalSource.href = json.original.S;
-                        submitter.href = "https://twitter.com/" + json.submitter.S;
-                        submitter.innerText = "@" + json.submitter.S;
-                    })
-                    .catch(err => {
-                        console.log("wtf?");
-                        console.log(err);
-                    });
-            }
-            slapTheBongo();
-            autoPlayWarningSeen = false;
-            document.onkeydown = function (e) {
-                e = e || window.event;
-                switch (e.keyCode) {
-                    case 32:
-                        // [space] Request different video
-                        slapTheBongo();
-                        if (document.getElementById("autoplay-warning")) document.getElementById("autoplay-warning").remove();
-                        break;
-                    case 189:
-                        // [-] Make video smaller
-                        var currentSize = +bongocat.style.width.substring(0, 2);
-                        bongocat.style.width = currentSize - 5 + "vw";
-                        bongocat.style.height = currentSize - 5 + "vh";
-                        break;
-                    case 187:
-                        // [+] Make video larger
-                        var currentSize = +bongocat.style.width.substring(0, 2);
-                        bongocat.style.width = currentSize + 5 + "vw";
-                        bongocat.style.height = currentSize + 5 + "vh";
-                        break;
-                    case 67:
-                        // [c] Controls
-                        bongocat.controls = bongocat.controls ? false : true;
-                    case 80:
-                        // [-] Play/pause the video
-                        if (bongocat.paused) return bongocat.play();
-                        bongocat.pause();
-                        break;
-                    case 70:
-                        // [f] Show/hide footer
-                        var f = document.getElementById("footer");
-                        var ff = document.getElementById('fake-footer');
-                        if (f.style.display === "none") {
-                            f.style.display = "block";
-                            ff.style.display = "none";
-                        } else {
-                            f.style.display = "none";
-                            ff.style.display = "block";
-                        }
-
-                }
-            }
-        }
-
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </head>
 
 <body>
-    <div class="root">
+    <div id="root">
         <div class="header">
             <!-- just chillin -->
         </div>
-        <video autoplay="autoplay" controls="true" id="bongocat" style="width: 50vw; height: 50vh"></video>
-        <div class="footer" id="footer">
-            <button onclick="javascript:slapTheBongo()" class="kbd mobile-only" style="font-size: 6rem">BONGO</button>
-            <p id="autoplay-warning">you may need to press <span class="kbd">space</span> once to get the party
+        <div v-if="!bongocat">
+            <img src="bongocat.gif" id="loading-bongocat" />
+            <p>loading...</p>
+        </div>
+        <video v-if="bongocat" ref="bongocat" autoplay="autoplay" :controls="videoControls" :src="bongocat.src.S"
+            :style="{ width: videoSize + 'vw', height: videoSize + 'vh'}">
+        </video>
+        <div id="footer" v-if="showFooter">
+            <!-- <button onclick="javascript:slapTheBongo()" class="kbd mobile-only" style="font-size: 6rem">BONGO</button> -->
+            <p v-if="!autoplayWarningSeen">you may need to press <span class="kbd">space</span> once to get the party
                 started!</p>
-            <p><a href="#" target="_blank" id="source">original source</a> submitted by <a href="#" id="submitter"
-                    target="_blank">@nexuist</a></p>
+            <p v-if="bongocat">
+                <a :href="bongocat.original.S" target="_blank" id="source">original source</a>
+                submitted by
+                <a :href="`https://twitter.com/${bongocat.submitter.S}`" id="submitter" target="_blank">@{{
+                    bongocat.submitter.S }}</a></p>
             <ul class="kbd-bar">
-                <li class="kbd-item"><span class="kbd">space</span> another video </li>
-                <li class="kbd-item"><span class="kbd">+</span> zoom in</li>
-                <li class="kbd-item"><span class="kbd">-</span> zoom out</li>
-                <li class="kbd-item"><span class="kbd">p</span> play/pause</li>
-                <li class="kbd-item"><span class="kbd">f</span> toggle footer</li>
-                <li class="kbd-item"><span class="kbd">c</span> toggle controls</li>
+                <li v-for="k in keys" class="kbd-item"><span class="kbd">{{ k[0] }}</span> {{ k[1] }} </li>
             </ul>
-            <span>
+            <div>
                 <a href="https://twitter.com/nexuist?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="true">Follow
                     @nexuist</a>
                 <a href="https://twitter.com/intent/tweet?button_hashtag=bongocat&ref_src=twsrc%5Etfw" class="twitter-hashtag-button"
                     data-url="https://bongocat.io" data-related="nexuist" data-show-count="false">Tweet #bongocat</a>
-            </span>
+            </div>
             <div>
                 made with ❤️ by andi
                 <br />
@@ -109,12 +49,12 @@
                     target="_blank">submit a bongocat</a>
             </div>
         </div>
-        <div id="fake-footer" style="display: none">
+        <div id="fake-footer" v-if="!showFooter">
             <!-- looking through my code? tell me how your day's going! -> @nexuist -->
             <!-- if you're wondering why this fake footer is needed, it's bc flex only gives you top/center/bottom when you have 3 divs visible and i'm too lazy to work around that -->
         </div>
     </div>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script src="bongo.js"></script>
 </body>
 
 </html>

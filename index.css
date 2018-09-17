@@ -4,13 +4,14 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align: center;
 }
 /* http://www.jimmyscode.com/css-styling-for-kbd-tags/ */
 .kbd {
   padding: 0.1em 0.6em;
   border: 1px solid #ccc;
   font-size: 11px;
-  font-family: Arial, Helvetica, sans-serif;
   background-color: #f7f7f7;
   color: #333;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #ffffff inset;
@@ -24,6 +25,11 @@ body {
   text-shadow: 0 1px 0 #fff;
   line-height: 1.4;
   white-space: nowrap;
+}
+#loading-bongocat {
+  padding: 30px;
+  border: 1px solid black;
+  border-radius: 40px;
 }
 .kbd-bar {
   width: 100%;
@@ -40,21 +46,19 @@ body {
 .kbd-item:last-child::after {
   content: "" !important;
 }
-.root {
+#root {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   height: 100%;
 }
-.footer {
+#footer {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   padding-bottom: 15px;
 }
 @media (min-width: 1025px) {
