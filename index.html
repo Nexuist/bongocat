@@ -65,10 +65,12 @@
     </aside>
 
     <main>
-      <video v-if="bongocat && bongocat.type.S != 'yt'" ref="bongocat" autoplay="autoplay" :controls="videoControls" :src="bongocat.src.S" :style="{ width: videoSize + 'vw', height: videoSize + 'vh'}">
+      <video v-if="bongocat && bongocat.type.S != 'yt'" ref="bongocat" autoplay="autoplay" :controls="videoControls"
+        :src="bongocat.src.S" :style="{ width: videoSize + 'vw', height: videoSize + 'vh'}">
       </video>
       <iframe v-if="bongocat && bongocat.type.S == 'yt'" type="text/html" allow="autoplay" :style="{ width: videoSize + 'vw', height: videoSize + 'vh'}"
-            :src="`${bongocat.src.S}?rel=0;&autoplay=1&origin=https://bongocat.io`" frameborder="0"></iframe>
+        :src="`${bongocat.src.S}?rel=0;&autoplay=1&&controls=${videoControls ? 1 : 0}&origin=https://bongocat.io`"
+        frameborder="0"></iframe>
     </main>
 
     <div id="footer" class="information" v-if="showFooter">
