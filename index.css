@@ -98,9 +98,9 @@ a:hover {
   text-transform: uppercase;
 }
 
-.footer__link:not(:last-of-type) {
+/* .footer__link:not(:last-of-type) {
   margin-right: 20px;
-}
+} */
 
 @media (min-width: 1025px) {
   .how-to--desktop {
