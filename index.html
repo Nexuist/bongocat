@@ -16,8 +16,6 @@
                 fetch("https://lkub5gai6i.execute-api.us-east-1.amazonaws.com/prod/slap/the/bongo")
                     .then(res => res.json())
                     .then(json => {
-                        if (document.getElementById("autoplay-warning")) document.getElementById("autoplay-warning").remove();
-
                         bongocat.src = json.src.S;
                         originalSource.href = json.original.S;
                         submitter.href = "https://twitter.com/" + json.submitter.S;
@@ -36,6 +34,7 @@
                     case 32:
                         // [space] Request different video
                         slapTheBongo();
+                        if (document.getElementById("autoplay-warning")) document.getElementById("autoplay-warning").remove();
                         break;
                     case 189:
                         // [-] Make video smaller
