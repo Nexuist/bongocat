@@ -73,8 +73,7 @@ const root = new Vue({
           }
         })
         .catch(err => {
-          console.log("wtf?");
-          console.log(err);
+          console.error("wtf?", err);
         });
     }
   }

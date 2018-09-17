@@ -1,6 +1,6 @@
 const bongo = require("./handler").bongo;
 
 bongo({ queryStringParameters: { filter: "mp4" } }, {}, (err, res) => {
-  console.log(err);
+  console.error(err);
   console.log(res);
 });
