@@ -10,6 +10,19 @@ body {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: #6bf;
+}
+
+a:visited {
+  color: #666eff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .information {
   margin-top: 5%;
 }
@@ -52,14 +65,10 @@ body {
   padding-right: 10px;
 }
 
-.control::after {
+.control:not(:last-of-type)::after {
   content: "•";
 
   padding-left: 10px;
-}
-
-.control:last-child::after {
-  content: "" !important;
 }
 
 /* http://www.jimmyscode.com/css-styling-for-kbd-tags/ */
@@ -87,6 +96,10 @@ body {
 
 .control__key--button {
   text-transform: uppercase;
+}
+
+.footer__link:not(:last-of-type) {
+  margin-right: 20px;
 }
 
 @media (min-width: 1025px) {
