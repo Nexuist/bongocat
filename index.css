@@ -1,6 +1,4 @@
 html {
-  position: relative;
-
   width: 100%;
   height: 100%;
 }
@@ -85,6 +83,10 @@ body {
   text-shadow: 0 1px 0 #fff;
   font-size: 11px;
   color: #333;
+}
+
+.control__key--button {
+  text-transform: uppercase;
 }
 
 @media (min-width: 1025px) {
