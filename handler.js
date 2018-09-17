@@ -1,6 +1,6 @@
 "use strict";
 const AWS = require("aws-sdk");
-const bongocats = 19;
+const bongocats = 63;
 
 // https://stackoverflow.com/a/7228322
 function randomIntFromInterval(min, max) {
