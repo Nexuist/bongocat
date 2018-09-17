@@ -8,6 +8,7 @@ body {
 
   text-align: center;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  color: #333;
 }
 
 a {
@@ -82,16 +83,15 @@ a:hover {
   border-radius: 3px;
   padding: 0.1em 0.6em;
   background-color: #f7f7f7;
-  -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #ffffff inset;
-  -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #ffffff inset;
-  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #ffffff inset;
+  -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+  -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
 
   white-space: nowrap;
   line-height: 1.4;
 
   text-shadow: 0 1px 0 #fff;
   font-size: 11px;
-  color: #333;
 }
 
 .control__key--button {
