@@ -1,24 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>🐱🥁</title>
-    <style ref="text/css">
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-        }
-        .content {
-            display: flex;
-            flex: 1;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
-    </style>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="icon" type="image/ico" href="/favicon.ico" sizes="32x32">
     <script type="text/javascript">
+
         function slapTheBongo() {
             console.log("bongocat!");
             fetch("https://lkub5gai6i.execute-api.us-east-1.amazonaws.com/prod/slap/the/bongo").then((res) => res.json()).then(json => {
@@ -29,12 +18,17 @@
         window.onload = () => {
             var bongocat = document.querySelector("#bongocat");
             slapTheBongo();
+            autoPlayWarningSeen = false;
             document.onkeydown = function (e) {
                 e = e || window.event;
                 switch (e.keyCode) {
                     case 32:
                         // [space] Request different video
                         slapTheBongo();
+                        if (!autoPlayWarningSeen) {
+                            autoPlayWarningSeen = true;
+                            document.getElementById("autoplay-warning").remove();
+                        }
                         break;
                     case 189:
                         // [-] Make video smaller
@@ -53,6 +47,18 @@
                         if (bongocat.paused) return bongocat.play();
                         bongocat.pause();
                         break;
+                    case 70:
+                        // [f] Show/hide footer
+                        var f = document.getElementById("footer");
+                        var ff = document.getElementById('fake-footer');
+                        if (f.style.display === "none") {
+                            f.style.display = "block";
+                            ff.style.display = "none";
+                        } else {
+                            f.style.display = "none";
+                            ff.style.display = "block";
+                        }
+
                 }
             }
         }
@@ -61,9 +67,40 @@
 </head>
 
 <body>
-    <div class="content">
+    <div class="root">
+        <div class="header">
+            <!-- just chillin -->
+        </div>
         <video autoplay="autoplay" id="bongocat" style="width: 50vw; height: 50vh"></video>
+        <div class="footer" id="footer">
+            <p id="autoplay-warning">you may need to press <span class="kbd">space</span> once to get the party
+                started!</p>
+            <ul class="kbd-bar">
+                <li class="kbd-item"><span class="kbd">space</span> another video </li>
+                <li class="kbd-item"><span class="kbd">+</span> zoom in</li>
+                <li class="kbd-item"><span class="kbd">-</span> zoom out</li>
+                <li class="kbd-item"><span class="kbd">p</span> play/pause</li>
+                <li class="kbd-item"><span class="kbd">f</span> show/hide footer</li>
+            </ul>
+            <span>
+                <a href="https://twitter.com/nexuist?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="true">Follow
+                    @nexuist</a>
+                <a href="https://twitter.com/intent/tweet?button_hashtag=bongocat&ref_src=twsrc%5Etfw" class="twitter-hashtag-button"
+                    data-url="https://bongocat.io" data-related="nexuist" data-show-count="false">Tweet #bongocat</a>
+            </span>
+            <div>
+                made with ❤️ by andi
+                <br />
+                <a href="https://bongo.cat" target="_blank">try bongo.cat</a>
+                <a href="https://bongo.cat" target="_blank">submit a bongocat</a>
+            </div>
+        </div>
+        <div id="fake-footer" style="display: none">
+            <!-- looking through my code? tell me how your day's going! -> @nexuist -->
+            <!-- if you're wondering why this fake footer is needed, it's bc flex only gives you top/center/bottom when you have 3 divs visible and i'm too lazy to work around that -->
+        </div>
     </div>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 
 </html>
