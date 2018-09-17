@@ -37,7 +37,7 @@ let root = new Vue({
   },
   data: {
     endpoint:
-      "https://lkub5gai6i.execute-api.us-east-1.amazonaws.com/prod/slap/the/bongo",
+      "https://lkub5gai6i.execute-api.us-east-1.amazonaws.com/prod/slap/the/bongo?filter=mp4",
     autoplayWarningSeen: false,
     bongocat: null,
     videoSize: 50,

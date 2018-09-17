@@ -23,7 +23,8 @@
             :src="bongocat.src.S" :style="{ width: videoSize + 'vw', height: videoSize + 'vh'}">
         </video>
         <iframe v-if="bongocat && bongocat.type.S == 'yt'" type="text/html" allow="autoplay" :style="{ width: videoSize + 'vw', height: videoSize + 'vh'}"
-            :src="`${bongocat.src.S}?rel=0;&autoplay=1&origin=https://bongocat.io`" frameborder="0"></iframe>
+            :src="`${bongocat.src.S}?rel=0;&autoplay=1&&controls=${videoControls ? 1 : 0}&origin=https://bongocat.io`"
+            frameborder="0"></iframe>
         <div id="footer" v-if="showFooter">
             <button v-on:click="slapTheBongo" class="kbd mobile-only" style="font-size: 3rem; margin-bottom: 10px">BONGO</button>
             <p v-if="!autoplayWarningSeen" class="desktop-only">you may need to press <span class="kbd">space</span>
