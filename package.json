@@ -1,0 +1,17 @@
+{
+  "name": "bongocat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bongo.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nexuist/bongocat.git"
+  },
+  "author": "Andi Duro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nexuist/bongocat/issues"
+  },
+  "homepage": "https://github.com/nexuist/bongocat#readme"
+}
