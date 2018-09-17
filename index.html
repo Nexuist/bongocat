@@ -48,6 +48,9 @@
                         bongocat.style.width = currentSize + 5 + "vw";
                         bongocat.style.height = currentSize + 5 + "vh";
                         break;
+                    case 67:
+                        // [c] Controls
+                        bongocat.controls = bongocat.controls ? false : true;
                     case 80:
                         // [-] Play/pause the video
                         if (bongocat.paused) return bongocat.play();
@@ -77,7 +80,7 @@
         <div class="header">
             <!-- just chillin -->
         </div>
-        <video autoplay="autoplay" id="bongocat" style="width: 50vw; height: 50vh"></video>
+        <video autoplay="autoplay" controls="true" id="bongocat" style="width: 50vw; height: 50vh"></video>
         <div class="footer" id="footer">
             <button onclick="javascript:slapTheBongo()" class="kbd mobile-only" style="font-size: 6rem">BONGO</button>
             <p id="autoplay-warning">you may need to press <span class="kbd">space</span> once to get the party
@@ -89,7 +92,8 @@
                 <li class="kbd-item"><span class="kbd">+</span> zoom in</li>
                 <li class="kbd-item"><span class="kbd">-</span> zoom out</li>
                 <li class="kbd-item"><span class="kbd">p</span> play/pause</li>
-                <li class="kbd-item"><span class="kbd">f</span> show/hide footer</li>
+                <li class="kbd-item"><span class="kbd">f</span> toggle footer</li>
+                <li class="kbd-item"><span class="kbd">c</span> toggle controls</li>
             </ul>
             <span>
                 <a href="https://twitter.com/nexuist?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="true">Follow
