@@ -1,37 +1,36 @@
-let root = new Vue({
+const root = new Vue({
   el: "#root",
-  mounted: function() {
+  mounted() {
     window.addEventListener("keydown", event => {
-      switch (event.keyCode) {
-        case 32:
-          // [space]
+      switch (event.key) {
+        case " ":
           this.autoplayWarningSeen = true;
           this.slapTheBongo();
           break;
-        case 189:
-          // [-]
+
+        case "-":
           this.videoSize -= 10;
           break;
-        case 187:
-          // [+]
+
+        case "=":
           this.videoSize += 10;
           break;
-        case 67:
-          // [c]
+
+        case "c":
           this.videoControls = !this.videoControls;
           break;
-        case 80:
-          // [p]
-          let vid = this.$refs.bongocat;
-          if (vid.paused) return vid.play();
-          vid.pause();
+
+        case "p":
+          const vid = this.$refs.bongocat;
+          vid.paused ? vid.play() : vid.pause();
           break;
-        case 70:
-          // [f]
+
+        case "f":
           this.showFooter = !this.showFooter;
           break;
       }
     });
+
     if (!Hls.isSupported()) this.endpoint += "?filter=m3u8";
     this.slapTheBongo();
   },
@@ -53,17 +52,20 @@ let root = new Vue({
     ]
   },
   methods: {
-    slapTheBongo: function() {
+    slapTheBongo() {
       console.log("bongocat!");
       fetch(this.endpoint)
         .then(res => res.json())
         .then(json => {
           this.bongocat = json;
+
           if (json.type.S == "m3u8") {
             Vue.nextTick(() => {
-              var hls = new Hls();
+              const hls = new Hls();
+
               hls.loadSource(json.src.S);
               hls.attachMedia(this.$refs.bongocat);
+
               hls.on(Hls.Events.MANIFEST_PARSED, function() {
                 this.$refs.bongocat.play();
               });
@@ -71,8 +73,7 @@ let root = new Vue({
           }
         })
         .catch(err => {
-          console.log("wtf?");
-          console.log(err);
+          console.error("wtf?", err);
         });
     }
   }

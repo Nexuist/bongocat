@@ -1,74 +1,113 @@
-html,
-body {
+html {
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: #6bf;
+}
+
+a:visited {
+  color: #666eff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.viewport {
+  padding-top: 5%;
+
+  text-align: center;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  color: #333;
+}
+
+.information {
+  margin-top: 5%;
+}
+
+.loading__image {
+  border: 1px solid black;
+  border-radius: 40px;
+  padding: 30px;
+}
+
+.loading__text {
+  display: block;
+  margin-top: 1em;
+}
+
+.how-tos {
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  text-align: center;
+
+  list-style: none;
 }
+
+.how-to {
+  padding: 2vmin 0;
+}
+
+.how-to--desktop {
+  display: none;
+}
+
+.controls {
+  padding-bottom: 20px;
+}
+
+.control {
+  display: inline;
+}
+
+.control:not(:last-of-type) {
+  padding-right: 10px;
+}
+
+.control:not(:last-of-type)::after {
+  content: "•";
+
+  padding-left: 10px;
+}
+
 /* http://www.jimmyscode.com/css-styling-for-kbd-tags/ */
-.kbd {
-  padding: 0.1em 0.6em;
+.control__key {
+  display: inline-block;
+
+  margin: 0 0.1em;
   border: 1px solid #ccc;
-  font-size: 11px;
-  background-color: #f7f7f7;
-  color: #333;
-  -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #ffffff inset;
-  -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #ffffff inset;
-  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #ffffff inset;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  display: inline-block;
-  margin: 0 0.1em;
-  text-shadow: 0 1px 0 #fff;
-  line-height: 1.4;
+  padding: 0.1em 0.6em;
+  background-color: #f7f7f7;
+  -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+  -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+
   white-space: nowrap;
+  line-height: 1.4;
+
+  text-shadow: 0 1px 0 #fff;
+  font-size: 11px;
 }
-#loading-bongocat {
-  padding: 30px;
-  border: 1px solid black;
-  border-radius: 40px;
+
+.control__key--button {
+  text-transform: uppercase;
 }
-.kbd-bar {
-  width: 100%;
-  padding-bottom: 20px;
+
+.footer__link:not(:last-of-type) {
+  margin-right: 20px;
 }
-.kbd-item {
-  display: inline;
-  padding-right: 10px;
-}
-.kbd-item:after {
-  content: "•";
-  padding-left: 10px;
-}
-.kbd-item:last-child::after {
-  content: "" !important;
-}
-#root {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-}
-#footer {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 15px;
-}
-.desktop-only {
-  display: none;
-}
+
 @media (min-width: 1025px) {
-  .mobile-only {
-    display: none;
-  }
-  .desktop-only {
+  .how-to--desktop {
     display: block;
+  }
+
+  .how-to--mobile {
+    display: none;
   }
 }
