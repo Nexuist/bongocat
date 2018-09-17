@@ -1,4 +1,4 @@
-let bongo = require("./handler").bongo;
+const bongo = require("./handler").bongo;
 
 bongo({ queryStringParameters: { filter: "mp4" } }, {}, (err, res) => {
   console.log(err);
