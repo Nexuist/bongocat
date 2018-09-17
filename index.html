@@ -19,38 +19,37 @@
         }
     </style>
     <script type="text/javascript">
+        function slapTheBongo() {
+            console.log("bongocat!");
+            fetch("https://lkub5gai6i.execute-api.us-east-1.amazonaws.com/prod/slap/the/bongo").then((res) => res.json()).then(json => {
+                bongocat.src = json.src.S;
+            });
+        }
 
-        vids = [
-            "https://video.twimg.com/ext_tw_video/993486969702309889/pu/vid/630x640/ARUopI2nxvq7FC-9.mp4",
-            "https://i.imgur.com/FIYNPom.mp4",
-            "https://i.imgur.com/sgtMAad.mp4",
-            "https://i.imgur.com/4rg3Nvw.mp4",
-            "https://i.imgur.com/1tROMvK.mp4"
-        ];
         window.onload = () => {
-            console.log("bongocat");
-            var bongocat = document.querySelector("#bongocat")
-            bongocat.src = vids[Math.floor(Math.random() * vids.length)];
+            var bongocat = document.querySelector("#bongocat");
+            slapTheBongo();
             document.onkeydown = function (e) {
                 e = e || window.event;
                 switch (e.keyCode) {
                     case 32:
-                        // Request different video
-                        document.querySelector("#bongocat").src = vids[Math.floor(Math.random() * vids.length)];
+                        // [space] Request different video
+                        slapTheBongo();
                         break;
                     case 189:
-                        // Make video smaller
+                        // [-] Make video smaller
                         var currentSize = +bongocat.style.width.substring(0, 2);
                         bongocat.style.width = currentSize - 5 + "vw";
                         bongocat.style.height = currentSize - 5 + "vh";
                         break;
                     case 187:
-                        // Make video larger
+                        // [+] Make video larger
                         var currentSize = +bongocat.style.width.substring(0, 2);
                         bongocat.style.width = currentSize + 5 + "vw";
                         bongocat.style.height = currentSize + 5 + "vh";
                         break;
                     case 80:
+                        // [-] Play/pause the video
                         if (bongocat.paused) return bongocat.play();
                         bongocat.pause();
                         break;
