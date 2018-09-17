@@ -2,32 +2,26 @@ let root = new Vue({
   el: "#root",
   mounted: function() {
     window.addEventListener("keydown", event => {
-      switch (event.keyCode) {
-        case 32:
-          // [space]
+      switch (event.key) {
+        case " ":
           this.autoplayWarningSeen = true;
           this.slapTheBongo();
           break;
-        case 189:
-          // [-]
+        case "-":
           this.videoSize -= 10;
           break;
-        case 187:
-          // [+]
+        case "=":
           this.videoSize += 10;
           break;
-        case 67:
-          // [c]
+        case "c":
           this.videoControls = !this.videoControls;
           break;
-        case 80:
-          // [p]
+        case "p":
           let vid = this.$refs.bongocat;
           if (vid.paused) return vid.play();
           vid.pause();
           break;
-        case 70:
-          // [f]
+        case "f":
           this.showFooter = !this.showFooter;
           break;
       }
