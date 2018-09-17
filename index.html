@@ -2,92 +2,92 @@
 <html lang="en">
 
 <head>
-    <title>🐱🥁</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/7.0.3/sanitize.min.css">
-    <link rel="stylesheet" href="./index.css">
-    <link rel="icon" type="image/ico" href="./favicon.ico" sizes="32x32">
+  <title>🐱🥁</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/7.0.3/sanitize.min.css">
+  <link rel="stylesheet" href="./index.css">
+  <link rel="icon" type="image/ico" href="./favicon.ico" sizes="32x32">
 </head>
 
 <body>
-    <div id="root">
-        <aside class="bongocat-loading" v-if="!bongocat">
-            <img class="bongocat-loading__image" src="./bongocat.gif" />
-            <span class="bongocat-loading__text">loading...</span>
-        </aside>
+  <div id="root">
+    <aside class="bongocat-loading" v-if="!bongocat">
+      <img class="bongocat-loading__image" src="./bongocat.gif" />
+      <span class="bongocat-loading__text">loading...</span>
+    </aside>
 
-        <main>
-            <video v-if="bongocat" ref="bongocat" autoplay="autoplay" :controls="videoControls" :src="bongocat.src.S"
-                :style="{ width: videoSize + 'vw', height: videoSize + 'vh'}">
-            </video>
-        </main>
+    <main>
+      <video v-if="bongocat" ref="bongocat" autoplay="autoplay" :controls="videoControls" :src="bongocat.src.S" :style="{ width: videoSize + 'vw', height: videoSize + 'vh'}">
+      </video>
+    </main>
 
-        <div id="footer" class="information" v-if="showFooter">
-            <ul class="how-tos">
-                <li class="how-to how-to--mobile">
-                    <button v-on:click="slapTheBongo" class="control__key" style="font-size: 3rem; margin-bottom: 10px">
-                        BONGO
-                    </button>
-                </li>
+    <div id="footer" class="information" v-if="showFooter">
+      <ul class="how-tos">
+        <li class="how-to how-to--mobile">
+          <button v-on:click="slapTheBongo" class="control__key" style="font-size: 3rem; margin-bottom: 10px">
+            BONGO
+          </button>
+        </li>
 
-                <li v-if="!autoplayWarningSeen" class="how-to how-to--desktop">
-                    you may need to press
-                    <span class="control__key">
-                        space
-                    </span>
-                    once to get the party
-                    started!
-                </li>
+        <li v-if="!autoplayWarningSeen" class="how-to how-to--desktop">
+          you may need to press
+          <span class="control__key">
+            space
+          </span>
+          once to get the party
+          started!
+        </li>
 
-                <li v-if="bongocat" class="how-to">
-                    <a :href="bongocat.original.S" target="_blank" id="source" rel="noopener noreferrer">
-                        original source
-                    </a>
-                    submitted by
-                    <a :href="`https://twitter.com/${bongocat.submitter.S}`" id="submitter" target="_blank" rel="noopener noreferrer">@{{
-                        bongocat.submitter.S }}
-                    </a>
-                </li>
+        <li v-if="bongocat" class="how-to">
+          <a :href="bongocat.original.S" target="_blank" id="source" rel="noopener noreferrer">
+            original source
+          </a>
+          submitted by
+          <a :href="`https://twitter.com/${bongocat.submitter.S}`" id="submitter" target="_blank" rel="noopener noreferrer">@{{
+            bongocat.submitter.S }}
+          </a>
+        </li>
 
-                <li class="how-to how-to--desktop">
-                    <ul class="controls">
-                        <li v-for="k in keys" class="control">
-                            <span class="control__key">{{ k[0] }}</span> {{ k[1] }}
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+        <li class="how-to how-to--desktop">
+          <ul class="controls">
+            <li v-for="k in keys" class="control">
+              <span class="control__key">{{ k[0] }}</span> {{ k[1] }}
+            </li>
+          </ul>
+        </li>
+      </ul>
 
-            <footer class="footer">
-                <p class="footer__social">
-                    <a href="https://twitter.com/nexuist?ref_src=twsrc%5Etfw" class="twitter-follow-button"
-                        data-show-count="true" rel="noopener noreferrer">
-                        Follow @nexuist
-                    </a>
-                    <a href="https://twitter.com/intent/tweet?button_hashtag=bongocat&ref_src=twsrc%5Etfw" class="twitter-hashtag-button"
-                        data-url="https://bongocat.io" data-related="nexuist" data-show-count="false" rel="noopener noreferrer">
-                        Tweet #bongocat
-                    </a>
-                </p>
+      <footer class="footer">
+        <p class="footer__social">
+          <a href="https://twitter.com/nexuist?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="true"
+            rel="noopener noreferrer">
+            Follow @nexuist
+          </a>
+          <a href="https://twitter.com/intent/tweet?button_hashtag=bongocat&ref_src=twsrc%5Etfw" class="twitter-hashtag-button"
+            data-url="https://bongocat.io" data-related="nexuist" data-show-count="false" rel="noopener noreferrer">
+            Tweet #bongocat
+          </a>
+        </p>
 
-                <p class="footer__signature">
-                    made with ❤️ by andi
-                    <br>
+        <p class="footer__signature">
+          made with ❤️ by andi
 
-                    <a href="https://bongo.cat" target="_blank" rel="noopener noreferrer">try bongo.cat</a>
-                    <a href="mailto:submissions@bongocat.io?subject=BONGOCAT!&body=Please%20follow%20the%20format%20below.%20This%20email%20will%20be%20automatically%20scanned%20and%20you%20will%20receive%20a%20response%20when%20your%20submission%20is%20accepted.%20Thank%20you!%0A%0A.mp4%20%2F%20YouTube%20direct%20link%3A%0AOriginal%20source%3A%0AYour%20Twitter%20username%20(for%20credit)%3A%0AAnything%20to%20plug%3F%20(may%20appear%20on%20page%20when%20your%20submission%20is%20viewed)%3A%0A%0ATweet%20%40nexuist%20for%20any%20questions."
-                        target="_blank" rel="noopener noreferrer">
-                        submit a bongocat
-                    </a>
-                </p>
-            </footer>
-        </div>
+          <br>
+
+          <a href="https://bongo.cat" target="_blank" rel="noopener noreferrer">try bongo.cat</a>
+          <a href="mailto:submissions@bongocat.io?subject=BONGOCAT!&body=Please%20follow%20the%20format%20below.%20This%20email%20will%20be%20automatically%20scanned%20and%20you%20will%20receive%20a%20response%20when%20your%20submission%20is%20accepted.%20Thank%20you!%0A%0A.mp4%20%2F%20YouTube%20direct%20link%3A%0AOriginal%20source%3A%0AYour%20Twitter%20username%20(for%20credit)%3A%0AAnything%20to%20plug%3F%20(may%20appear%20on%20page%20when%20your%20submission%20is%20viewed)%3A%0A%0ATweet%20%40nexuist%20for%20any%20questions."
+            target="_blank" rel="noopener noreferrer">
+            submit a bongocat
+          </a>
+        </p>
+      </footer>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js" defer></script>
-    <script src="./bongo.js" defer></script>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js" defer></script>
+  <script src="./bongo.js" defer></script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 
 </html>
