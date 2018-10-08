@@ -81,7 +81,7 @@
         :src="bongocat.src.S" :style="{ width: videoSize + 'vw', height: videoSize + 'vh'}">
       </video>
       <iframe v-if="bongocat && bongocat.type.S == 'yt'" type="text/html" allow="autoplay" :style="{ width: videoSize + 'vw', height: videoSize + 'vh'}"
-        :src="`${bongocat.src.S}?autoplay=1&controls=${videoControls ? 1 : 0}&disablekb=1&origin=https://bongocat.io`"
+        :src="`${bongocat.src.S}?autoplay=1&enable_js=1&mute=1&controls=${videoControls ? 1 : 0}&disablekb=1&origin=https://bongocat.io`"
         frameborder="0"></iframe>
     </main>
 
