@@ -23,7 +23,7 @@ let fil = fs.readFileSync("../wahaha.txt", "utf8").split("\n");
         S: fil[i]
       },
       src: {
-        S: `https://youtube.com/embed/${id}`
+        S: `https://youtube.com/embed/${id}`+ `?rel=0&autoplay=1&mute=1`
       },
       submitter: {
         S: "nexuist"
