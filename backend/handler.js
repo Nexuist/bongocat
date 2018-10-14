@@ -1,6 +1,5 @@
 "use strict";
 const AWS = require("aws-sdk");
-const bongocats = 90;
 
 // https://stackoverflow.com/a/7228322
 function randomIntFromInterval(min, max) {
@@ -43,7 +42,11 @@ module.exports.bongo = async (event, _context, callback) => {
       ];
   } else {
     // Get a random one
-    // TODO: update bongocats var automatically using DescribeTable
+    const { Table: { ItemCount: bongocats } } = await dynamo
+      .describeTable({
+        TableName: "Bongocat"
+      })
+      .promise();
     bongocat = await dynamo
       .getItem({
         Key: {
