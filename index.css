@@ -29,7 +29,7 @@ a:hover {
 }
 
 .loading__image {
-  border: 1px solid black;
+  border: 1px dashed orange;
   border-radius: 40px;
   padding: 30px;
 }
